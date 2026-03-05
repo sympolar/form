@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Consultation — Sympolar</title>
+<link rel="stylesheet" href="css/sympolar.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="header-brand" href="https://www.sympolar.com">Sympolar</a>
+    <nav class="header-nav">
+      <a href="contact.html" class="active">Contact</a>
+      <a href="inquiry.html">Inquiry</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="added-touch.html">Added Touch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="pipeline-bar">
+  <div class="pipeline-inner">
+    <a class="pipe-step current" href="contact.html">
+      <span class="pipe-num">1</span>
+      <span>Contact</span>
+    </a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step" href="inquiry.html">
+      <span class="pipe-num">2</span>
+      <span>Inquiry</span>
+    </a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step" href="onboarding.html">
+      <span class="pipe-num">3</span>
+      <span>Onboarding</span>
+    </a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step" href="added-touch.html">
+      <span class="pipe-num">4</span>
+      <span>Added Touch</span>
+    </a>
+  </div>
+</div>
+
+<section class="form-hero">
+  <div class="hero-tag">Step 1 of 4</div>
+  <h1>Quick <em>Consultation</em></h1>
+  <p>Just the basics. We'll take it from here — usually within 24 hours.</p>
+  <div class="hero-meta">
+    <span>⏱ 30 seconds</span>
+    &nbsp;·&nbsp; No commitment required
+  </div>
+</section>
+
+<div class="container">
+
+  <div id="success-screen" class="success-screen">
+    <div class="success-icon">🐻‍❄️</div>
+    <h2>We'll be in touch.</h2>
+    <p>Your message has been sent to Sympolar. Expect to hear from us within 24 hours.</p>
+    <div class="success-links">
+      <a href="inquiry.html">Continue to Inquiry →</a>
+      <a href="https://www.sympolar.com">Back to Sympolar</a>
+    </div>
+  </div>
+
+  <div id="form-body">
+    <form id="contact-form" onsubmit="handleSubmit(event)">
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">👤</span> Your Information</div>
+        <div class="field-group two">
+          <div class="field">
+            <label>Name <span class="req">*</span></label>
+            <input type="text" name="Name" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label>Business Name <span class="opt">(optional)</span></label>
+            <input type="text" name="Business_Name" placeholder="Your business or brand">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📬</span> How to Reach You</div>
+        <div class="field-group two">
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="Email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label>Phone <span class="opt">(optional)</span></label>
+            <input type="tel" name="Phone" placeholder="(555) 000-0000">
+          </div>
+        </div>
+        <div class="field-group" style="margin-top:14px;">
+          <div class="field">
+            <label>Preferred Contact Method</label>
+            <div class="pill-group">
+              <label class="pill"><input type="radio" name="Preferred_Contact" value="Email" checked><span class="pl">📧 Email</span></label>
+              <label class="pill"><input type="radio" name="Preferred_Contact" value="Phone"><span class="pl">📞 Phone</span></label>
+              <label class="pill"><input type="radio" name="Preferred_Contact" value="Text"><span class="pl">💬 Text</span></label>
+              <label class="pill"><input type="radio" name="Preferred_Contact" value="Any"><span class="pl">✓ Any works</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📝</span> Anything to Add?</div>
+        <div class="field">
+          <label>Notes <span class="opt">(optional)</span></label>
+          <textarea name="Notes" placeholder="Anything we should know upfront? A quick description of your business, what you're hoping to build, or when you'd like to connect." rows="4"></textarea>
+        </div>
+      </div>
+
+      <input type="hidden" name="Form_Source" value="Sympolar Quick Contact">
+      <input type="hidden" name="subject" value="Quick Consultation Request — Sympolar">
+
+      <button type="submit" class="btn-submit">
+        Send Request →
+      </button>
+      <p style="color:var(--muted2);font-size:12px;margin-top:12px;">
+        Sends to <a href="mailto:sympolarllc@gmail.com" style="color:var(--muted);text-decoration:none;">sympolarllc@gmail.com</a> via your email client. &nbsp;Ready for <a href="inquiry.html" style="color:var(--sky);text-decoration:none;">structured inquiry?</a>
+      </p>
+
+    </form>
+  </div>
+
+</div>
+
+<footer class="form-footer">
+  <strong style="color:var(--txt);">Sympolar</strong> &nbsp;·&nbsp;
+  <a href="https://www.sympolar.com">sympolar.com</a> &nbsp;·&nbsp;
+  <a href="mailto:sympolarllc@gmail.com">sympolarllc@gmail.com</a> &nbsp;·&nbsp;
+  Static Website Design &amp; Development
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const f = e.target;
+  const data = new FormData(f);
+  let body = '';
+  for (const [k, v] of data.entries()) {
+    if (k !== 'subject') body += k.replace(/_/g,' ') + ': ' + v + '\n';
+  }
+  const subject = 'Quick Consultation Request — Sympolar';
+  window.location.href = 'mailto:sympolarllc@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  setTimeout(() => {
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 600);
+}
+</script>
+
+</body>
+</html>
